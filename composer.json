@@ -1,0 +1,25 @@
+{
+    "name": "programster/curl-easier",
+    "type": "library",
+    "description": "Package that wraps around curl-easy for helping with curl requests",
+    "keywords": ["curl"],
+    "homepage": "https://github.com/programster/curl-easier",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stuart Page",
+            "email": "stuart.page@irap.org",
+            "homepage": "http://irap.org/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "stil/curl-easy": "1.2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Programster\\CurlEasier\\": ""
+        }
+    }
+}
