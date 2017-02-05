@@ -1,2 +1,2 @@
 # curl-easier
-A wrapper around [curl-easy](https://github.com/stil/curl-easy) to simplify the interface (at least in my opinion) with using the [iRAP/Queues package](https://github.com/iRAP-software/package-queues).
+A package to make it easier to send curl request asynchronously using [curl_multi_exec](https://secure.php.net/manual/en/function.curl-multi-exec.php).

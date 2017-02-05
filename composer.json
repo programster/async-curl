@@ -1,7 +1,7 @@
 {
     "name": "programster/curl-easier",
     "type": "library",
-    "description": "Package that wraps around curl-easy for helping with curl requests",
+    "description": "Package to make it easier to send curl request asynchronously using [curl_multi_exec](https://secure.php.net/manual/en/function.curl-multi-exec.php).",
     "keywords": ["curl"],
     "homepage": "https://github.com/programster/curl-easier",
     "license": "MIT",
@@ -14,9 +14,7 @@
         }
     ],
     "require": {
-        "php": ">=5.5.0",
-        "stil/curl-easy": "1.2.*",
-        "irap/queues" : "1.0.0"
+        "php": ">=5.5.0"
     },
     "autoload": {
         "psr-4": {
