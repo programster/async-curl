@@ -1,9 +1,10 @@
-# async-curl
+# Async CURL Package
 A package to make it easier to send curl request asynchronously using [curl_multi_exec](https://secure.php.net/manual/en/function.curl-multi-exec.php).
 
 ## Examples
 
 ### Basic Batch Request
+Here we will create 1,000 requests and send them all off. When all the requests have come back, we will process the responses.
 
 ```php
 $curlHandler = new Programster\AsyncCurl\BasicRequestHandler();
@@ -40,6 +41,7 @@ foreach ($responses as $response)
 
 
 ### Handle Responses Asynchronously As They Come Back
+Here we will create a 1,000 requests, but instead of waiting for all the responses to come back before processing them, we will process them immediately. This relies on us creating a "handler" callback that will handle the response.
 
 ```php
 $curlHandler = new Programster\AsyncCurl\AsyncRequestHandler();
