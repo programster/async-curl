@@ -1,5 +1,5 @@
 {
-    "name": "programster/curl-easier",
+    "name": "programster/async-curl",
     "type": "library",
     "description": "A package to make it easier to send curl request asynchronously using [curl_multi_exec](https://secure.php.net/manual/en/function.curl-multi-exec.php).",
     "keywords": ["curl"],
@@ -8,23 +8,23 @@
     "authors": [
         {
             "name": "Stuart Page",
-            "email": "stuart.page@irap.org",
-            "homepage": "http://irap.org/",
+            "email": "sdpagent@gmail.com",
+            "homepage": "https://stuart.page",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=5.5.0"
+        "php": ">= 7.0.0"
     },
     "autoload": {
         "psr-4": {
-            "Programster\\CurlEasier\\": "src"
+            "Programster\\AsyncCurl\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Programster\\CurlEasier\\Testing\\": "testing",
-            "Programster\\CurlEasier\\Testing\\Tests\\": "testing/tests"
+            "Programster\\AsyncCurl\\Testing\\": "testing",
+            "Programster\\AsyncCurl\\Testing\\Tests\\": "testing/tests"
         }
     }
 }

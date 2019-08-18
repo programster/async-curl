@@ -7,12 +7,13 @@
 namespace Programster\AsyncCurl;
 
 
-class BasicRequest implements CurlRequestInterface
+class AsyncRequest implements CurlRequestInterface
 {
     private $m_url;
     private $m_method;
     private $m_params;
     private $m_curlResource;
+    private $m_responseHandler;
 
 
     /**
@@ -30,7 +31,8 @@ class BasicRequest implements CurlRequestInterface
         Method $method,
         int $timeout,
         array $params,
-        array $headers
+        array $headers,
+        \Closure $handler
     )
     {
         $this->m_url = $url;
@@ -38,6 +40,7 @@ class BasicRequest implements CurlRequestInterface
         $this->m_params = $params;
         $this->m_headers = $headers;
         $this->m_curlResource = curl_init();
+        $this->m_responseHandler = $handler;
 
         curl_setopt($this->m_curlResource, CURLOPT_HEADER, true);
         curl_setopt($this->m_curlResource, CURLOPT_RETURNTRANSFER, true);
@@ -108,5 +111,6 @@ class BasicRequest implements CurlRequestInterface
 
 
     public function getCurlResource() { return $this->m_curlResource; }
+    public function getResponseHandler() : \Closure { return $this->m_responseHandler; }
 }
 
