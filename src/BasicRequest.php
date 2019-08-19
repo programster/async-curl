@@ -24,13 +24,17 @@ class BasicRequest implements CurlRequestInterface
      * @param int $timeout - the timout in seconds to wait.
      * @param array $params - array of name values to send with the request.
      * @param array $headers - name/value pairs of additional headers you wish to send.
+     * @param bool $jsonEncodePostFields - whether to use json_encode on the POSTfields. 
+     *                                     recommend true on PUT, PATCH, DELETE, and false
+     *                                     on POST, unless required by your API.
      */
     public function __construct(
         string $url,
         Method $method,
         int $timeout,
         array $params,
-        array $headers
+        array $headers,
+        bool $jsonEncodePostFields
     )
     {
         $this->m_url = $url;
@@ -63,28 +67,60 @@ class BasicRequest implements CurlRequestInterface
             case 'put':
             {
                 curl_setopt($this->m_curlResource, CURLOPT_CUSTOMREQUEST, "PUT");
-                curl_setopt($this->m_curlResource, CURLOPT_POSTFIELDS, json_encode($this->m_params));
+
+                if ($jsonEncodePostFields)
+                {
+                    curl_setopt($this->m_curlResource, CURLOPT_POSTFIELDS, json_encode($this->m_params));
+                }
+                else
+                {
+                    curl_setopt($this->m_curlResource, CURLOPT_POSTFIELDS, $this->m_params);
+                }
             }
             break;
 
             case 'post':
             {
                 curl_setopt($this->m_curlResource, CURLOPT_POST, true);
-                curl_setopt($this->m_curlResource, CURLOPT_POSTFIELDS, $this->m_params);
+
+                if ($jsonEncodePostFields)
+                {
+                    curl_setopt($this->m_curlResource, CURLOPT_POSTFIELDS, json_encode($this->m_params));
+                }
+                else
+                {
+                    curl_setopt($this->m_curlResource, CURLOPT_POSTFIELDS, $this->m_params);
+                }
             }
             break;
 
             case 'patch':
             {
                 curl_setopt($this->m_curlResource, CURLOPT_CUSTOMREQUEST, "PATCH");
-                curl_setopt($this->m_curlResource, CURLOPT_POSTFIELDS, json_encode($this->m_params));
+
+                if ($jsonEncodePostFields)
+                {
+                    curl_setopt($this->m_curlResource, CURLOPT_POSTFIELDS, json_encode($this->m_params));
+                }
+                else
+                {
+                    curl_setopt($this->m_curlResource, CURLOPT_POSTFIELDS, $this->m_params);
+                }
             }
             break;
 
             case 'delete':
             {
                 curl_setopt($this->m_curlResource, CURLOPT_CUSTOMREQUEST, "DELETE");
-                curl_setopt($this->m_curlResource, CURLOPT_POSTFIELDS, json_encode($this->m_params));
+
+                if ($jsonEncodePostFields)
+                {
+                    curl_setopt($this->m_curlResource, CURLOPT_POSTFIELDS, json_encode($this->m_params));
+                }
+                else
+                {
+                    curl_setopt($this->m_curlResource, CURLOPT_POSTFIELDS, $this->m_params);
+                }
             }
             break;
         }
