@@ -95,7 +95,6 @@ class BasicRequestHandler
         }
 
         curl_multi_close($this->m_curlMultiResource);
-        print "finished completing." . PHP_EOL;
     }
 
 

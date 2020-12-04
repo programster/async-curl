@@ -139,7 +139,6 @@ class AsyncRequestHandler
      */
     private function markCompleted()
     {
-        print "running mark completed" . PHP_EOL;
         $this->m_state = self::SATE_COMPLETED;
 
         // close the handles
